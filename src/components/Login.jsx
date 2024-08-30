@@ -1,13 +1,46 @@
-import React, { useState } from 'react';
+import { useState, useRef } from 'react';
 import Header from './Header';
 import { BACKGROUND_IMAGE } from '../utils/constants';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { IoCloseCircleOutline } from 'react-icons/io5';
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [hidePass, setHidePass] = useState(true);
+  const [emailError, setemailError] = useState();
+  const [pwdError, setpwdError] = useState();
 
   const toggleSignInForm = () => {
     setIsSignIn(!isSignIn);
   };
+
+  const checkValidData = (email, password) => {
+    const isEmailValid =
+      /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email);
+    const isPasswordValid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(
+      password
+    );
+
+    if (!isEmailValid) {
+      setemailError('Please enter a valid email address');
+    } else {
+      setemailError(null);
+    }
+    if (!isPasswordValid) {
+      setpwdError(
+        'Your password must contain minimum 8 characters, atleast one letter and one number'
+      );
+    } else {
+      setpwdError(null);
+    }
+  };
+
+  const handleButtonClick = () => {
+    checkValidData(email.current.value, password.current.value);
+  };
+
+  const email = useRef();
+  const password = useRef(null);
 
   return (
     <>
@@ -21,11 +54,15 @@ const Login = () => {
         />
       </div>
       <div className="flex justify-center items-center h-screen">
-        <div className="w-[450px] h-fit py-12 px-[68px] bg-[rgba(0,0,0,0.7)] rounded-[4px] z-10">
+        <div className="mt-8 w-96 h-fit py-12 px-10 sm:w-[450px] sm:px-[68px] sm:mt-0 bg-[rgba(0,0,0,0.7)] rounded-[4px] z-10">
           <h1 className=" mb-7 text-white font-bold text-4xl capitalize">
             {isSignIn ? 'sign in' : 'sign up'}
           </h1>
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             {!isSignIn && (
               <input
                 className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)]"
@@ -34,27 +71,61 @@ const Login = () => {
               />
             )}
             <input
-              className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)]"
-              type="email"
+              ref={email}
+              className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)] invalid:border-[#eb3942]"
+              type="text"
               placeholder="Email Address"
             />
-            <input
-              className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)]"
-              type="password"
-              placeholder="Password"
-            />
+            {emailError && (
+              <span className="flex flex-row items-center text-sm text-[#eb3942] font-normal -mt-2 mb-4">
+                <IoCloseCircleOutline className="w-5 h-5 mr-0.5" />
+                {emailError}
+              </span>
+            )}
+
+            <div className="relative">
+              <div onClick={() => setHidePass(!hidePass)}>
+                {hidePass ? (
+                  <FaEye
+                    className="fill-[rgba(128,128,128,0.7)] absolute right-4 top-[1.3rem]"
+                    title="Show Password"
+                  />
+                ) : (
+                  <FaEyeSlash
+                    className="w-[18px] fill-[rgba(128,128,128,0.7)] absolute right-[15px] top-[1.3rem]"
+                    title="Hide Password"
+                  />
+                )}
+              </div>
+
+              <input
+                ref={password}
+                className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)]"
+                type={hidePass ? 'password' : 'text'}
+                placeholder="Password"
+              />
+              {pwdError && (
+                <span className=" block text-sm text-[#eb3942] font-normal -mt-2 mb-4">
+                  <IoCloseCircleOutline className="w-5 h-5 mr-0.5 inline" />
+                  {pwdError}
+                </span>
+              )}
+            </div>
+
             <button
+              onClick={handleButtonClick}
               className="w-full py-1.5 min-h-10 font-medium text-base text-white bg-[#e50913] duration-200 hover:bg-[#c50913] rounded-[0.2rem] capitalize"
               type="submit"
             >
               {isSignIn ? 'sign in' : 'sign up'}
             </button>
-            <p
-              onClick={toggleSignInForm}
-              className="mt-4 font-normal text-base text-white text-opacity-70 cursor-pointer"
-            >
+            <p className="mt-4 font-normal text-base text-white text-opacity-70">
               {isSignIn ? 'New to Netflix?' : 'Already a User?'}
-              <a className="text-white font-medium pl-1">
+              <a
+                className="text-white font-medium pl-1 cursor-pointer hover:underline"
+                // passing function as reference
+                onClick={toggleSignInForm}
+              >
                 {isSignIn ? 'Sign Up Now' : 'Sign In Now'}
               </a>
             </p>
