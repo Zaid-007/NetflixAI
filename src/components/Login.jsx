@@ -7,17 +7,26 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [hidePass, setHidePass] = useState(true);
-  const [emailError, setemailError] = useState();
-  const [pwdError, setpwdError] = useState();
+  const [errorMsg, setErrorMsg] = useState({ emailMsg: '', passwordMsg: '' });
 
   const toggleSignInForm = () => {
     setIsSignIn(!isSignIn);
   };
 
-  const handleButtonClick = () => {};
-
-  const email = useRef();
+  const email = useRef(null);
   const password = useRef(null);
+  const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  const inputValidation = (regex, inputField, msgType, message) => {
+    const isValid = regex.test(inputField.current.value);
+    return setErrorMsg({ ...errorMsg, [msgType]: !isValid ? message : null });
+    // !isValid
+    //   ? setErrorMsg({ ...errorMsg, [msgType]: message })
+    //   : setErrorMsg({ ...errorMsg, [msgType]: null });
+  };
+
+  const handleButtonClick = () => {};
 
   return (
     <>
@@ -53,20 +62,19 @@ const Login = () => {
               type="email"
               //Validate input when user leaves form field
               onBlur={() => {
-                const isEmailValid =
-                  /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
-                    email.current.value
-                  );
-                !isEmailValid
-                  ? setemailError('Please enter a valid email address')
-                  : setemailError(null);
+                inputValidation(
+                  emailRegex,
+                  email,
+                  'emailMsg',
+                  'Please enter a valid email address'
+                );
               }}
               placeholder="Email Address"
             />
-            {emailError && (
+            {errorMsg.emailMsg && (
               <span className="flex flex-row items-center text-sm text-[#eb3942] font-normal -mt-2 mb-4">
                 <IoCloseCircleOutline className="w-5 h-5 mr-0.5" />
-                {emailError}
+                {errorMsg.emailMsg}
               </span>
             )}
 
@@ -90,22 +98,19 @@ const Login = () => {
                 className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)]"
                 type={hidePass ? 'password' : 'text'}
                 onBlur={() => {
-                  const isPasswordValid =
-                    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(
-                      password.current.value
-                    );
-                  !isPasswordValid
-                    ? setpwdError(
-                        'Your password must contain minimum 8 characters, atleast one letter and one number'
-                      )
-                    : setpwdError(null);
+                  inputValidation(
+                    passwordRegex,
+                    password,
+                    'passwordMsg',
+                    'Your password must contain minimum 8 characters, atleast one letter and one number'
+                  );
                 }}
                 placeholder="Password"
               />
-              {pwdError && (
+              {errorMsg.passwordMsg && (
                 <span className=" block text-sm text-[#eb3942] font-normal -mt-2 mb-4">
                   <IoCloseCircleOutline className="w-5 h-5 mr-0.5 inline" />
-                  {pwdError}
+                  {errorMsg.passwordMsg}
                 </span>
               )}
             </div>
