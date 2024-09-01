@@ -51,6 +51,7 @@ const Login = () => {
               ref={email}
               className="w-full p-4 mb-4 text-white bg-[rgba(22,22,22,0.7)] rounded-[0.25rem] border-[0.0625rem] border-[rgba(128,128,128,0.7)] invalid:border-[#eb3942]"
               type="email"
+              //Validate input when user leaves form field
               onBlur={() => {
                 const isEmailValid =
                   /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
