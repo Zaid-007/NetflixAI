@@ -3,11 +3,20 @@ import Header from './Header';
 import { BACKGROUND_IMAGE } from '../utils/constants';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { IoCloseCircleOutline } from 'react-icons/io5';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { auth } from '../utils/firebase';
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [hidePass, setHidePass] = useState(true);
-  const [errorMsg, setErrorMsg] = useState({ emailMsg: '', passwordMsg: '' });
+  const [errorMsg, setErrorMsg] = useState({
+    emailError: '',
+    passwordError: '',
+    authError: '',
+  });
 
   const toggleSignInForm = () => {
     setIsSignIn(!isSignIn);
@@ -26,7 +35,45 @@ const Login = () => {
     //   : setErrorMsg({ ...errorMsg, [msgType]: null });
   };
 
-  const handleButtonClick = () => {};
+  const handleButtonClick = () => {
+    if (!isSignIn) {
+      // Registering new user (Sign up)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          setErrorMsg({ ...errorMsg, authError: '' });
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg({ ...errorMsg, authError: errorMessage });
+        });
+    } else {
+      // Sign in Logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          setErrorMsg({ ...errorMsg, authError: '' });
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg({ ...errorMsg, authError: errorMessage });
+        });
+    }
+  };
 
   return (
     <>
@@ -65,16 +112,16 @@ const Login = () => {
                 inputValidation(
                   emailRegex,
                   email,
-                  'emailMsg',
+                  'emailError',
                   'Please enter a valid email address'
                 );
               }}
               placeholder="Email Address"
             />
-            {errorMsg.emailMsg && (
+            {errorMsg.emailError && (
               <span className="flex flex-row items-center text-sm text-[#eb3942] font-normal -mt-2 mb-4">
                 <IoCloseCircleOutline className="w-5 h-5 mr-0.5" />
-                {errorMsg.emailMsg}
+                {errorMsg.emailError}
               </span>
             )}
 
@@ -101,22 +148,22 @@ const Login = () => {
                   inputValidation(
                     passwordRegex,
                     password,
-                    'passwordMsg',
+                    'passwordError',
                     'Your password must contain minimum 8 characters, atleast one letter and one number'
                   );
                 }}
                 placeholder="Password"
               />
-              {errorMsg.passwordMsg && (
+              {(errorMsg.passwordError || errorMsg.authError) && (
                 <span className=" block text-sm text-[#eb3942] font-normal -mt-2 mb-4">
                   <IoCloseCircleOutline className="w-5 h-5 mr-0.5 inline" />
-                  {errorMsg.passwordMsg}
+                  {errorMsg.passwordError || errorMsg.authError}
                 </span>
               )}
             </div>
 
             <button
-              // onClick={handleButtonClick}
+              onClick={handleButtonClick}
               className="w-full py-1.5 min-h-10 font-medium text-base text-white bg-[#e50913] duration-200 hover:bg-[#c50913] rounded-[0.2rem] capitalize"
               type="submit"
             >
