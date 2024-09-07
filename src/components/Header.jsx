@@ -48,7 +48,7 @@ const Header = () => {
   }, []);
 
   return user ? (
-    <div className="flex justify-between items-center w-screen h-14 px-10 py-6 z-10 absolute bg-black">
+    <div className="flex justify-between items-center w-screen h-14 px-10 pt-[130px] z-20 bg-transparent absolute">
       <svg
         viewBox="0 0 111 30"
         version="1.1"
@@ -63,13 +63,11 @@ const Header = () => {
         </g>
       </svg>
       <div className="flex items-center">
-        <img className="w-9 h-9 mr-4" alt="usericon" src={user?.photoURL} />
-        <p className="text-white mr-4 capitalize">
-          Welcome {user?.displayName}
-        </p>
+        <img className="w-9 h-9 mr-3" alt="usericon" src={user?.photoURL} />
+        <p className="text-white mr-3 capitalize">{user?.displayName}</p>
         <button
           onClick={handleSignOut}
-          className="py-2.5 px-6 font-medium text-[15px] text-white leading-[15px] rounded-sm border border-solid border-[#888] capitalize"
+          className="py-2.5 px-6 font-medium text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(229,9,20)] capitalize"
         >
           sign out
         </button>
