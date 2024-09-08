@@ -10,13 +10,13 @@ const VideoTitle = ({ title, overview, id }) => {
   useMovieLogo(id);
 
   return (
-    <div className="pt-[60%] sm:pt-[22%] px-8 sm:px-16 absolute z-10 w-full aspect-video bg-gradient-to-r from-black">
+    <div className="pt-[60%] sm:pt-[20%] px-8 sm:px-16 absolute z-10 w-full aspect-video bg-gradient-to-r from-black">
       <img
-        className="w-64 pb-6"
+        className="w-64 pb-4"
         src={IMAGE_CDN_URL + logo}
         alt={title + 'Logo'}
       />
-      <p className="hidden sm:block w-3/6 text-sm text-white pb-6">
+      <p className="hidden sm:block w-3/6 text-sm text-white pb-4">
         {overview}
       </p>
       <button className="bg-white text-black font-semibold py-1.5 px-6 rounded-sm shadow-md hover:bg-opacity-80">
