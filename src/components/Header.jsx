@@ -48,7 +48,7 @@ const Header = () => {
   }, []);
 
   return user ? (
-    <div className="flex justify-between items-center w-screen h-14 px-10 pt-[130px] z-20 bg-transparent absolute">
+    <div className="flex justify-between items-center w-full h-14 px-10 z-20 bg-transparent relative">
       <svg
         viewBox="0 0 111 30"
         version="1.1"

@@ -3,19 +3,20 @@ import useMovieLogo from '../hooks/useMovieLogo';
 import { useSelector } from 'react-redux';
 import { IoMdPlay } from 'react-icons/io';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
+import { IMAGE_CDN_URL } from '../utils/constants';
 
 const VideoTitle = ({ title, overview, id }) => {
   const logo = useSelector((store) => store.movies?.movieLogo);
   useMovieLogo(id);
 
   return (
-    <div className="pt-[60%] sm:pt-[20%] px-8 sm:px-16 absolute z-10">
+    <div className="pt-[60%] sm:pt-[22%] px-8 sm:px-16 absolute z-10 w-full aspect-video bg-gradient-to-r from-black">
       <img
         className="w-64 pb-6"
-        src={'https://image.tmdb.org/t/p/original/' + logo}
+        src={IMAGE_CDN_URL + logo}
         alt={title + 'Logo'}
       />
-      <p className="hidden sm:block w-3/6 text-base text-white pb-6">
+      <p className="hidden sm:block w-3/6 text-sm text-white pb-6">
         {overview}
       </p>
       <button className="bg-white text-black font-semibold py-1.5 px-6 rounded-sm shadow-md hover:bg-opacity-80">

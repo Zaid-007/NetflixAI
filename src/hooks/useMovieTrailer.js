@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { API_OPTIONS } from '../utils/constants';
 import { useDispatch } from 'react-redux';
-import { addTeaserVideo } from '../utils/moviesSlice';
+import { addTrailerVideo } from '../utils/moviesSlice';
 
-const useMovieTeaser = (movieId) => {
+const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
 
   const getMovieVideos = async () => {
@@ -13,9 +13,9 @@ const useMovieTeaser = (movieId) => {
     );
     const json = await data.json();
 
-    const filterData = json.results.filter((video) => video.type === 'Teaser');
+    const filterData = json.results.filter((video) => video.type === 'Trailer');
     const teaser = filterData.length ? filterData[0] : json.results[0];
-    dispatch(addTeaserVideo(teaser));
+    dispatch(addTrailerVideo(teaser));
   };
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const useMovieTeaser = (movieId) => {
   return;
 };
 
-export default useMovieTeaser;
+export default useMovieTrailer;
