@@ -12,14 +12,13 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();
+
   return (
-    <>
-      <div>
-        <Header />
-        <MainContainer />
-        <SecondaryContainer />
-      </div>
-    </>
+    <div>
+      <Header />
+      <MainContainer />
+      <SecondaryContainer />
+    </div>
   );
 };
 

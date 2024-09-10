@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMovieLogo } from '../utils/moviesSlice';
 
 const useMovieLogo = (movieId) => {
+  const movieLogo = useSelector((store) => store.movies.movieLogo);
   const dispatch = useDispatch();
 
   const getMovieLogo = async () => {
@@ -18,7 +19,7 @@ const useMovieLogo = (movieId) => {
   };
 
   useEffect(() => {
-    getMovieLogo();
+    !movieLogo && getMovieLogo();
   }, []);
 };
 
