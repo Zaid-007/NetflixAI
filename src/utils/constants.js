@@ -14,6 +14,4 @@ export const API_OPTIONS = {
 
 export const IMAGE_CDN_URL = 'https://image.tmdb.org/t/p/original/';
 
-export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY;
-
 export const GROQ_API_KEY = import.meta.env.VITE_GROQ_KEY;

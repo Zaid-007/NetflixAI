@@ -155,14 +155,14 @@ const Login = () => {
       </div>
 
       {/* Login Form */}
-      <div className="bg-black w-full h-screen absolute z-0 opacity-50"></div>
+      <div className="bg-black w-full h-screen absolute z-0 opacity-45"></div>
       <img
         className="w-full h-screen object-cover absolute -z-[1]"
         src={BACKGROUND_IMAGE}
         alt="Background Image Login Screen"
       />
       <div className="flex justify-center items-center h-screen">
-        <div className="mt-8 w-96 h-fit py-12 px-10 sm:w-[450px] sm:px-[68px] sm:mt-0 bg-[rgba(0,0,0,0.7)] rounded-[4px] z-10">
+        <div className="mt-0 sm:mt-8 w-96 sm:w-[450px] h-fit py-12 px-10 sm:px-[68px] bg-[rgba(0,0,0,0.7)] rounded-[4px] z-10">
           <h1 className=" mb-7 text-white font-bold text-4xl capitalize">
             {isSignIn ? 'sign in' : 'sign up'}
           </h1>

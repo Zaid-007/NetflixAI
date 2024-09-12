@@ -23,7 +23,7 @@ const AiSearchBar = () => {
   const handleSearchClick = async () => {
     dispatch(searchButtonClicked(true));
 
-    // Make an API call to GPT API and get Movie Results
+    // Make an API call to Groq API and get Movie Results
     const groqQuery =
       "Act as a Movie Recommendation system and suggest some movies for the query :'" +
       searchText.current.value +
@@ -47,18 +47,18 @@ const AiSearchBar = () => {
   return (
     <div className="sm:pt-[10%] flex justify-center">
       <form
-        className="w-full sm:w-1/2 p-4 bg-black grid grid-cols-12"
+        className="w-full sm:w-1/2 p-2 pb-3 sm:p-4 bg-black bg-opacity-85 grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
-          className="mr-4 p-2 sm:p-4 col-span-9 h-12"
+          className="mr-2 sm:mr-4 p-2 sm:p-4 h-10 sm:h-12 text-sm sm:text-base col-span-9"
           type="text"
           placeholder="What would you like to watch today?"
         />
         <button
           onClick={handleSearchClick}
-          className="py-2 px-4 col-span-3 bg-red-700 font-medium text-white rounded-md"
+          className="col-span-3 bg-red-700 font-medium text-white sm:text-base rounded-sm"
         >
           Search
         </button>

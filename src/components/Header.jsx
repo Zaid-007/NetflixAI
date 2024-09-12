@@ -67,7 +67,7 @@ const Header = () => {
         </Link>
         <div className="flex items-center">
           <Link to="/ai-search">
-            <button className="py-2.5 px-3 sm:px-4 mr-3 font-medium text-xs sm:text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(189,54,166)]">
+            <button className="py-2.5 px-3 sm:px-4 mr-3 font-medium text-sm sm:text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(189,54,166)]">
               AI Search
             </button>
           </Link>
@@ -81,7 +81,7 @@ const Header = () => {
           </p>
           <button
             onClick={handleSignOut}
-            className="py-2.5 px-4 sm:px-6 font-medium text-xs sm:text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(229,9,20)] capitalize"
+            className="py-2.5 px-4 sm:px-6 font-medium text-sm sm:text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(229,9,20)] capitalize"
           >
             sign out
           </button>

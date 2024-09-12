@@ -21,6 +21,7 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
+    // Memoization: Caching the results of API call & calling only if object is empty
     !nowPlayingMovies && getNowPlayingMovies();
   }, []);
 };

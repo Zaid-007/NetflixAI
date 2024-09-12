@@ -4,7 +4,7 @@ import { IMAGE_CDN_URL } from '../utils/constants';
 const MovieList = ({ title, movies }) => {
   return (
     <div>
-      <h1 className="text-white text-2xl py-4">{title}</h1>
+      <h1 className="text-white text-xl sm:text-2xl py-4">{title}</h1>
       <div className="flex overflow-x-scroll no-scrollbar snap-mandatory snap-x">
         <div className="flex gap-x-4">
           {movies?.map((movie) => {

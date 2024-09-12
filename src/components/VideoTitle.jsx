@@ -12,7 +12,7 @@ const VideoTitle = ({ title, overview, id }) => {
   if (!logo) return;
 
   return (
-    <div className="pt-[60%] sm:pt-[18%] px-8 sm:px-16 relative z-10 w-full aspect-video sm:bg-gradient-to-r sm:from-black">
+    <div className="pt-[60%] sm:pt-[18%] px-6 sm:px-16 relative z-10 w-full aspect-video sm:bg-gradient-to-r sm:from-black">
       <img
         className="w-64 pb-4"
         src={IMAGE_CDN_URL + logo}

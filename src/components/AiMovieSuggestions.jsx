@@ -8,9 +8,9 @@ const AiMovieSuggestions = () => {
   );
 
   return (
-    <div className="w-4/5 px-8 my-4 mx-auto bg-black bg-opacity-90 text-white">
+    <div className="w-11/12 sm:w-4/5 px-6 sm:px-8 my-4 mx-auto bg-black bg-opacity-85 text-white">
       {searchButtonClicked && !movieNames ? (
-        <h1 className="text-2xl py-4 text-center">Loading...</h1>
+        <h1 className="text-lg sm:text-2xl py-4 text-center">Loading...</h1>
       ) : null}
       {movieNames &&
         movieNames.map((movieName, index) => (
