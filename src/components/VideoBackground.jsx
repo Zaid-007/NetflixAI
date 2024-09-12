@@ -6,8 +6,10 @@ const VideoBackground = ({ id }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
   useMovieTrailer(id);
 
+  // if (!trailer) return;
+
   return (
-    <div className="w-full">
+    <div className="w-full absolute">
       <iframe
         className="w-full aspect-video"
         src={

@@ -4,7 +4,7 @@ import Login from './components/Login';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import appStore from './utils/appStore';
 import Error from './components/Error';
-import GptSearch from './components/GptSearch';
+import AiSearch from './components/AiSearch';
 
 function App() {
   const approuter = createBrowserRouter([
@@ -19,8 +19,8 @@ function App() {
       errorElement: <Error />,
     },
     {
-      path: '/gpt-search',
-      element: <GptSearch />,
+      path: '/ai-search',
+      element: <AiSearch />,
       errorElement: <Error />,
     },
   ]);

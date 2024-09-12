@@ -49,7 +49,7 @@ const Header = () => {
 
   return (
     user && (
-      <div className="flex justify-between items-center w-full h-14 px-10 z-20 bg-gradient-to-b from-black relative">
+      <div className="flex justify-between items-center w-full h-14 px-4 sm:px-10 z-20 bg-black sm:bg-transparent sm:bg-gradient-to-b sm:from-black relative">
         <Link to="/browse">
           <svg
             viewBox="0 0 111 30"
@@ -66,16 +66,22 @@ const Header = () => {
           </svg>
         </Link>
         <div className="flex items-center">
-          <Link to="/gpt-search">
-            <button className="py-2.5 px-4 mr-3 font-medium text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(189,54,166)]">
-              GPT Search
+          <Link to="/ai-search">
+            <button className="py-2.5 px-3 sm:px-4 mr-3 font-medium text-xs sm:text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(189,54,166)]">
+              AI Search
             </button>
           </Link>
-          <img className="w-9 h-9 mr-3" alt="usericon" src={user?.photoURL} />
-          <p className="text-white mr-3 capitalize">{user?.displayName}</p>
+          <img
+            className="hidden sm:inline w-9 h-9 mr-3"
+            alt="usericon"
+            src={user?.photoURL}
+          />
+          <p className="hidden sm:inline text-white mr-3 capitalize">
+            {user?.displayName}
+          </p>
           <button
             onClick={handleSignOut}
-            className="py-2.5 px-6 font-medium text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(229,9,20)] capitalize"
+            className="py-2.5 px-4 sm:px-6 font-medium text-xs sm:text-[15px] text-white leading-[15px] rounded-sm bg-[rgb(229,9,20)] capitalize"
           >
             sign out
           </button>
