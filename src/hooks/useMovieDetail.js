@@ -40,8 +40,8 @@ const useMovieDetail = (movieId) => {
         releaseDate,
         cast,
         genres,
-        logo: logo.file_path,
-        backdrop: backdrop.file_path,
+        logo: logo?.file_path,
+        backdrop: backdrop?.file_path,
       })
     );
   };

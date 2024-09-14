@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AiSearchBar from '../../components/AiSearchBar';
 import { BACKGROUND_IMAGE } from '../../utils/constants';
 import Header from '../../components/Header';
@@ -16,8 +16,11 @@ const AiSearch = () => {
   //Clearing the search movie results
   dispatch(removeSearchMovieResults());
   dispatch(searchButtonClicked(false));
-  //Clearing data of movie detail page
-  dispatch(removeMovieDetail());
+
+  useEffect(() => {
+    //Clearing data of movie detail page
+    dispatch(removeMovieDetail());
+  }, []);
 
   return (
     <div className="pb-4">

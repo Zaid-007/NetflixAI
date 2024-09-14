@@ -16,15 +16,17 @@ const MovieInfo = () => {
       {movieDetail && (
         <div className="-mt-14 z-10">
           <img
-            className="-my-48 sm:-my-0 w-full h-screen object-contain sm:object-cover sm:absolute"
+            className="mt-14 sm:mt-0 w-full h-full sm:h-screen object-contain sm:object-cover sm:absolute"
             src={IMAGE_CDN_URL + movieDetail.backdrop}
           />
           <div className="sm:w-[55%] sm:h-screen pt-[12%] px-6 sm:px-16 relative bg-[#181818] sm:bg-transparent sm:bg-gradient-to-r sm:from-[#181818] sm:from-30% shadow-[0_35px_15px_55px_rgb(24,24,24)] sm:shadow-none">
             <div className="sm:w-[82%] text-white">
-              <img
-                className="sm:w-3/5 pb-4"
-                src={IMAGE_CDN_URL + movieDetail.logo}
-              />
+              {movieDetail.logo && (
+                <img
+                  className="sm:w-3/5 pb-4"
+                  src={IMAGE_CDN_URL + movieDetail.logo}
+                />
+              )}
               <h1 className="pt-6 pb-4 font-medium text-2xl">
                 {movieDetail.title}
               </h1>
