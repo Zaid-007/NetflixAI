@@ -18,6 +18,7 @@ const Browse = () => {
   useUpcomingMovies();
 
   useEffect(() => {
+    //Clearing data of movie detail page
     dispatch(removeMovieDetail());
   }, []);
 

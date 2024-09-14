@@ -5,7 +5,6 @@ import { IMAGE_CDN_URL } from '../utils/constants';
 import useMovieLogo from '../hooks/useMovieLogo';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { IoClose } from 'react-icons/io5';
 
 const VideoTitle = ({ title, overview, id }) => {
   const [toggleVideo, setToggleVideo] = useState(false);

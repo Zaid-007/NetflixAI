@@ -16,6 +16,7 @@ const AiSearch = () => {
   //Clearing the search movie results
   dispatch(removeSearchMovieResults());
   dispatch(searchButtonClicked(false));
+  //Clearing data of movie detail page
   dispatch(removeMovieDetail());
 
   return (

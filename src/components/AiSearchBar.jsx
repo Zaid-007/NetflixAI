@@ -35,7 +35,7 @@ const AiSearchBar = () => {
     });
 
     const movieList = chatCompletion.choices[0].message.content.split(',');
-
+    // Search Movie Info for all elements in array and wait till all promises are fulfilled
     const promiseArray = movieList.map((movie) => searchMovieTmdb(movie));
     const tmdbResults = await Promise.all(promiseArray);
 

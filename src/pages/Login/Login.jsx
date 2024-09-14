@@ -100,7 +100,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           setErrorMsg({ ...errorMsg, authError: '' });
-          // ...
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -123,7 +122,6 @@ const Login = () => {
           })
         );
         navigate('/browse');
-        // ...
       } else {
         // User is signed out
         dispatch(removeUser());
