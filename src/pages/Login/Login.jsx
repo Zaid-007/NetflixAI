@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { BACKGROUND_IMAGE, USER_AVATAR } from '../utils/constants';
+import { BACKGROUND_IMAGE, USER_AVATAR } from '../../utils/constants';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import {
@@ -8,10 +8,9 @@ import {
   updateProfile,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { auth } from '../utils/firebase';
+import { auth } from '../../utils/firebase';
 import { useDispatch } from 'react-redux';
-import { addUser, removeUser } from '../utils/userSlice';
-import Header from './Header';
+import { addUser, removeUser } from '../../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {

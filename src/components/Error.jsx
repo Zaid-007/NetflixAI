@@ -27,16 +27,16 @@ const Error = () => {
       />
       <div className="bg-black w-full h-screen absolute z-0 opacity-10"></div>
       <div className="flex flex-col justify-center items-center w-full h-full absolute">
-        <h1 className="mb-6 text-white font-medium text-7xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.57)]">
+        <h1 className="mb-6 text-white font-medium text-4xl sm:text-7xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.57)]">
           Lost your way?
         </h1>
-        <p className="mb-6 text-white font-normal text-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.57)]">
+        <p className="mb-6 text-white text-center font-normal text-lg px-4 sm:px-0 sm:text-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.57)]">
           Sorry, we can't find that page. You'll find lots to explore on the
           home page.{' '}
         </p>
         <button
           onClick={() => history.back()}
-          className="bg-white px-7 h-11 text-lg font-semibold rounded-[4px]"
+          className="bg-white px-4 sm:px-7 h-9 sm:h-11 sm:text-lg font-semibold rounded-[4px]"
         >
           Netflix Home
         </button>

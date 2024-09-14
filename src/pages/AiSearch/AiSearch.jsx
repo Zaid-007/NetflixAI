@@ -1,13 +1,14 @@
 import React from 'react';
-import AiSearchBar from './AiSearchBar';
-import { BACKGROUND_IMAGE } from '../utils/constants';
-import Header from './Header';
-import AiMovieSuggestions from './AiMovieSuggestions';
+import AiSearchBar from '../../components/AiSearchBar';
+import { BACKGROUND_IMAGE } from '../../utils/constants';
+import Header from '../../components/Header';
+import AiMovieSuggestions from '../../components/AiMovieSuggestions';
 import {
   removeSearchMovieResults,
   searchButtonClicked,
-} from '../utils/groqSlice';
+} from '../../utils/groqSlice';
 import { useDispatch } from 'react-redux';
+import { removeMovieDetail } from '../../utils/moviesSlice';
 
 const AiSearch = () => {
   const dispatch = useDispatch();
@@ -15,14 +16,16 @@ const AiSearch = () => {
   //Clearing the search movie results
   dispatch(removeSearchMovieResults());
   dispatch(searchButtonClicked(false));
+  dispatch(removeMovieDetail());
 
   return (
-    <div>
+    <div className="pb-4">
       <img
         className="w-full h-full object-cover fixed -z-[1]"
         src={BACKGROUND_IMAGE}
-        alt="Background Image Login Screen"
+        alt="Background Image"
       />
+
       <Header />
       <AiSearchBar />
       <AiMovieSuggestions />

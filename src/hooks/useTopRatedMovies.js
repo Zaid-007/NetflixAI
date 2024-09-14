@@ -5,7 +5,6 @@ import { addTopRatedMovies } from '../utils/moviesSlice';
 
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
-
   const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
 
   // Fetch data from TMDB API and update the store

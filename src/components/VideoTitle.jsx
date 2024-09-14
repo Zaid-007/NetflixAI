@@ -1,12 +1,13 @@
 import React from 'react';
-import useMovieLogo from '../hooks/useMovieLogo';
-import { useSelector } from 'react-redux';
 import { IoMdPlay } from 'react-icons/io';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { IMAGE_CDN_URL } from '../utils/constants';
+import useMovieLogo from '../hooks/useMovieLogo';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const VideoTitle = ({ title, overview, id }) => {
-  const logo = useSelector((store) => store.movies?.movieLogo);
+  const logo = useSelector((store) => store.movies.movieLogo);
   useMovieLogo(id);
 
   if (!logo) return;
@@ -24,10 +25,12 @@ const VideoTitle = ({ title, overview, id }) => {
       <button className="bg-white text-black font-semibold py-1.5 px-6 rounded-sm shadow-md hover:bg-opacity-80">
         <IoMdPlay className="-mt-1 mr-1 inline scale-150" /> Play
       </button>
-      <button className="bg-gray-500 text-white font-semibold bg-opacity-50 py-1.5 px-6 mx-3 rounded-sm shadow-md">
-        <IoMdInformationCircleOutline className="-mt-1 mr-1 inline scale-150" />{' '}
-        More Info
-      </button>
+      <Link to={'title/' + id}>
+        <button className="bg-gray-500 text-white font-semibold bg-opacity-50 py-1.5 px-6 mx-3 rounded-sm shadow-md">
+          <IoMdInformationCircleOutline className="-mt-1 mr-1 inline scale-150" />{' '}
+          More Info
+        </button>
+      </Link>
     </div>
   );
 };
