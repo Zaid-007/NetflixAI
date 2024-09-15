@@ -14,37 +14,39 @@ const MovieInfo = () => {
     <>
       <Header />
       {movieDetail && (
-        <div className="-mt-14 z-10">
-          <img
-            className="mt-14 sm:mt-0 w-full h-full sm:h-screen object-contain sm:object-cover sm:absolute"
-            src={IMAGE_CDN_URL + movieDetail.backdrop}
-          />
-          <div className="sm:w-[55%] sm:h-screen pt-[12%] px-6 sm:px-16 relative bg-[#181818] sm:bg-transparent sm:bg-gradient-to-r sm:from-[#181818] sm:from-30% shadow-[0_35px_15px_55px_rgb(24,24,24)] sm:shadow-none">
-            <div className="sm:w-[82%] text-white">
-              {movieDetail.logo && (
-                <img
-                  className="sm:w-3/5 pb-4"
-                  src={IMAGE_CDN_URL + movieDetail.logo}
-                />
-              )}
-              <h1 className="pt-6 pb-4 font-medium text-2xl">
-                {movieDetail.title}
-              </h1>
-              <div className="flex gap-x-2 pb-4 text-sm sm:text-base text-white text-opacity-60">
-                <p>{movieDetail.releaseDate.substr(0, 4)}</p>|
-                <p>
-                  {Math.floor(movieDetail.runtime / 60)}h{' '}
-                  {movieDetail.runtime % 60}m
+        <div className="bg-[#181818] min-h-full">
+          <div className="z-10 ">
+            <img
+              className="sm:mt-0 w-full h-full sm:h-screen object-contain sm:object-cover sm:absolute"
+              src={IMAGE_CDN_URL + movieDetail.backdrop}
+            />
+            <div className="sm:w-[55%] sm:h-screen pt-[12%] px-6 sm:px-16 relative bg-[#181818] sm:bg-transparent sm:bg-gradient-to-r sm:from-[#181818] sm:from-30% shadow-[0_35px_15px_55px_rgb(24,24,24)] sm:shadow-none">
+              <div className="sm:w-[82%] text-white">
+                {movieDetail.logo && (
+                  <img
+                    className="sm:w-3/5 pb-4"
+                    src={IMAGE_CDN_URL + movieDetail.logo}
+                  />
+                )}
+                <h1 className="pt-6 pb-4 font-medium text-2xl">
+                  {movieDetail.title}
+                </h1>
+                <div className="flex gap-x-2 pb-4 text-sm sm:text-base text-white text-opacity-60">
+                  <p>{movieDetail.releaseDate.substr(0, 4)}</p>|
+                  <p>
+                    {Math.floor(movieDetail.runtime / 60)}h{' '}
+                    {movieDetail.runtime % 60}m
+                  </p>
+                  |<p>{movieDetail.genres.join(', ')}</p>
+                </div>
+                <p className="pb-4">{movieDetail.overview}</p>
+                <p className="text-white text-opacity-60 pb-8">
+                  Starring:{' '}
+                  <span className="text-white">
+                    {movieDetail.cast.join(', ')}
+                  </span>
                 </p>
-                |<p>{movieDetail.genres.join(', ')}</p>
               </div>
-              <p className="pb-4">{movieDetail.overview}</p>
-              <p className="text-white text-opacity-60 pb-4">
-                Starring:{' '}
-                <span className="text-white">
-                  {movieDetail.cast.join(', ')}
-                </span>
-              </p>
             </div>
           </div>
         </div>
