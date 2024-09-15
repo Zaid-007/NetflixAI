@@ -1,4 +1,4 @@
-# NetflixAI - Get Personalized AI Movie Recommendations
+# NetflixAI - Get Personalized Movie Recommendations with AI
 
 ## **Introduction**
 
