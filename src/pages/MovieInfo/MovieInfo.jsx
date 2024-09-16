@@ -17,10 +17,10 @@ const MovieInfo = () => {
         <div className="bg-[#181818] min-h-full sm:-mt-14">
           <div className="z-10 ">
             <img
-              className="w-full h-full sm:h-screen object-contain sm:object-cover sm:absolute"
+              className="w-full h-full sm:h-screen object-contain sm:object-cover sm:fixed"
               src={IMAGE_CDN_URL + movieDetail.backdrop}
             />
-            <div className="sm:w-[55%] sm:h-screen pt-[12%] px-6 sm:px-16 relative bg-[#181818] sm:bg-transparent sm:bg-gradient-to-r sm:from-[#181818] sm:from-30% shadow-[0_35px_15px_55px_rgb(24,24,24)] sm:shadow-none">
+            <div className="sm:w-[55%] sm:h-fit pt-[12%] px-6 sm:px-16 relative bg-[#181818] sm:bg-transparent sm:bg-gradient-to-r sm:from-[#181818] sm:from-30% shadow-[0_35px_15px_55px_rgb(24,24,24)] sm:shadow-none">
               <div className="sm:w-[82%] text-white">
                 {movieDetail.logo && (
                   <img
