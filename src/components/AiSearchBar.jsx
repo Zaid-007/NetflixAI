@@ -31,7 +31,7 @@ const AiSearchBar = () => {
 
     const chatCompletion = await client.chat.completions.create({
       messages: [{ role: 'user', content: groqQuery }],
-      model: 'llama-3.1-70b-versatile',
+      model: 'llama-3.3-70b-versatile',
     });
 
     const movieList = chatCompletion.choices[0].message.content.split(',');
