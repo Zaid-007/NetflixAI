@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-**NetflixAI** is a web application that is powered by Meta's LLaMA 3.1, accessible through the Groq API, to make your Netflix experience better. With this project, you can generate personalized movie recommendations based on your preferences with AI search and discover new content & detailed information about your favorite movies.
+**NetflixAI** is a web application that is powered by Meta's LLaMA 3.3, accessible through the Groq API, to make your Netflix experience better. With this project, you can generate personalized movie recommendations based on your preferences with AI search and discover new content & detailed information about your favorite movies.
 
 ## **Technologies Used**
 
@@ -18,7 +18,7 @@
 
 - **Firebase Authentication:** A tool by Google's Firebase used for implementing secure user authentication, ensuring that user credentials are protected.
 
-- **LLaMA 3.1:** The core of NetflixAI is powered by LLaMA 3.1, through Groq API to offer personalized movie recommendations based on user preferences. LLaMA is a large language model developed by Meta, designed to understand and generate human-like language.
+- **LLaMA 3.1:** The core of NetflixAI is powered by LLaMA 3.3, through Groq API to offer personalized movie recommendations based on user preferences. LLaMA is a large language model developed by Meta, designed to understand and generate human-like language.
 
 ## Getting Started 🚀
 
